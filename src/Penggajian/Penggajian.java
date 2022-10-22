@@ -1,67 +1,76 @@
 package Penggajian;
 
-import java.util.Scanner;
+import java.math.BigDecimal;
 
 public class Penggajian {
-    public static void main(String[] args) {
-        String Nama, NPM;
-        int gajipokok = 0;
-        int totalgaji = 0;
-        int tunjangan = 0;
-        int pajak = 0;
+    String namaKaryawan;
+    BigDecimal gaji;
+    BigDecimal potongan;
+    BigDecimal gajiBersih;
+    String jabatan;
+    String namaBagian;
 
-        Scanner sc = new Scanner(System.in);
+    public Penggajian(String namaKaryawan, BigDecimal gaji, BigDecimal potongan, String jabatan, String namaBagian) {
+        this.namaKaryawan = namaKaryawan;
+        this.gaji = gaji;
+        this.potongan = potongan;
+        this.jabatan = jabatan;
+        this.namaBagian = namaBagian;
+    }
 
-        System.out.println("Program Perhitungan Gaji Karyawan");
-        System.out.println("Universitas Indraprasta PGRI");
+    public Penggajian(){
 
-        System.out.println("======================================");
+        setGajiBersih((gaji==null?BigDecimal.ZERO:gaji).add(potongan==null?BigDecimal.ZERO:potongan));
 
-        System.out.println("Masukkan Nama   :");
-        Nama = sc.nextLine();
+        this.gajiBersih = getGajiBersih();
+    }
 
-        System.out.println("Masukkan NPM    :");
-        NPM = sc.nextLine();
+    public BigDecimal getGajiBersih() {
+        return gajiBersih;
+    }
 
-        System.out.println("1. Golongan 1A");
-        System.out.println("2. Golongan 1B");
-        System.out.println("3. Golongan 2A");
-        System.out.println("4. Golongan 2B");
-        System.out.println("5. Golongan 3A");
-        System.out.println("6. Golongan 3B");
-        System.out.println("");
+    public void setGajiBersih(BigDecimal gajiBersih) {
+        this.gajiBersih = gajiBersih;
+    }
 
-        System.out.println("Masukkan Pilihan Golongan");
+    public String getNamaKaryawan() {
+        return namaKaryawan;
+    }
 
-        int pilih = sc.nextInt();
-        if (pilih == 1) {
-            gajipokok = 1000000;
-            tunjangan = 100000;
-        } else if (pilih == 2) {
-            gajipokok = 2500000;
-            tunjangan = 250000;
-        } else if (pilih == 3) {
-            gajipokok = 3000000;
-            tunjangan = 300000;
-        } else if (pilih == 4) {
-            gajipokok = 4000000;
-            tunjangan = 400000;
-        } else if (pilih == 5) {
-            gajipokok = 5000000;
-            tunjangan = 500000;
-        } else if (pilih == 6) {
-            gajipokok = 5500000;
-            tunjangan = 550000;
-        }
-        pajak = ((5 / 2) * (gajipokok + tunjangan)) / 100;
-        totalgaji = ((gajipokok + tunjangan) - pajak);
+    public void setNamaKaryawan(String namaKaryawan) {
+        this.namaKaryawan = namaKaryawan;
+    }
 
-        System.out.println("======================================");
+    public BigDecimal getGaji() {
+        return gaji;
+    }
 
-        System.out.println("Nama Karyawan   = " + Nama);
-        System.out.println("NPM Karyawan    = " + NPM);
-        System.out.println("Gaji Pokok      = " + gajipokok);
-        System.out.println("Tunjangan       = " + tunjangan);
-        System.out.println("Pajak           = " + pajak);
+    public void setGaji(BigDecimal gaji) {
+        this.gaji = gaji;
+    }
+
+    public BigDecimal getPotongan() {
+        return potongan;
+    }
+
+    public void setPotongan(BigDecimal potongan) {
+        this.potongan = potongan;
+    }
+
+    public String getJabatan() {
+        return jabatan;
+    }
+
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
+    }
+
+    public String getNamaBagian() {
+        return namaBagian;
+    }
+
+    public void setNamaBagian(String namaBagian) {
+        this.namaBagian = namaBagian;
     }
 }
+
